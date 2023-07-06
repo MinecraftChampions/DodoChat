@@ -23,20 +23,26 @@ public class Utils {
     public static String parsePlaceholders(String initialString,JSONObject jsonObject) {
         replaceServerName(jsonObject);
         String tempString = initialString;
+        String replacement;
         if (jsonObject.keySet().contains("server")) {
-            tempString = tempString.replaceAll("%server%", jsonObject.getString("server"));
+            replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("server"));
+            tempString = tempString.replaceAll("%server%", replacement);
         }
         if (jsonObject.keySet().contains("player")) {
-            tempString = tempString.replaceAll("%player%", jsonObject.getString("player"));
+            replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("player"));
+            tempString = tempString.replaceAll("%player%", replacement);
         }
         if (jsonObject.keySet().contains("sender")) {
-            tempString = tempString.replaceAll("%sender%", jsonObject.getString("sender"));
+            replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("sender"));
+            tempString = tempString.replaceAll("%sender%", replacement);
         }
         if (jsonObject.keySet().contains("message")) {
-            tempString = tempString.replaceAll("%message%", jsonObject.getString("message"));
+            replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("message"));
+            tempString = tempString.replaceAll("%message%", replacement);
         }
         if (jsonObject.keySet().contains("lastServer")) {
-            tempString = tempString.replaceAll("%lastServer%", jsonObject.getString("lastServer"));
+            replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("lastServer"));
+            tempString = tempString.replaceAll("%lastServer%", replacement);
         }
         return tempString;
     }
