@@ -177,6 +177,19 @@
         </dependency>
         <dependency>
             <groupId>top.qscraft.dodoopenjava</groupId>
+            <artifactId>command</artifactId>
+            <version>2.3.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>top.qscraft.dodoopenjava</groupId>
+            <artifactId>permissions</artifactId>
+            <version>2.3.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>top.qscraft.dodoopenjava</groupId>
             <artifactId>event-websocket</artifactId>
             <version>2.3.3</version>
             <scope>compile</scope>

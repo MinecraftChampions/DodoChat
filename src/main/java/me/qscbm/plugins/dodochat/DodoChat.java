@@ -85,6 +85,7 @@ public class DodoChat {
         EventManage.registerEvents(new DodoEventListener(),authorization); //注册DodoOpenJava事件
         logger.info("注册命令解析器中");
         server.getCommandManager().register(DodoChatCommand.createBrigadierCommand());
+
         INSTANCE = this;
         logger.info("DodoChat已启动");
     }
