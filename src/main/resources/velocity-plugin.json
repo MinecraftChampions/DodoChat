@@ -1,0 +1,9 @@
+{
+  "id": "dodochat",
+  "name": "DodoChat",
+  "version": "1.0-SNAPSHOT",
+  "url": "https://github.com/MinecraftChampions/",
+  "authors": ["qscbm187531"],
+  "dependencies": [],
+  "main": "me.qscbm.plugins.dodochat.DodoChat"
+}

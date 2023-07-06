@@ -1,0 +1,56 @@
+# 设置项
+settings:
+  # Dodo消息转发相关
+  SendDodoMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%sender%代表发送者的群昵称，使用MiniMessage）
+    # https://adventure-docs.minecraft.kim/minimessage.html
+    format: "<bold>『<yellow>Dodo消息</yellow>』</bold> <aqua>%sender%</aqua> <gray>-></gray> %message%"
+    # 监听的频道ID
+    channelId: "aa"
+  # 服内消息转发相关
+  # 注意支持markdown语法
+  # https://open.imdodo.com/dev/api/message.html
+  SendServerMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%sender%代表发送者的显示名，%server%玩家所在服务器）
+    format: "[服内消息]%sender%：%message%"
+    # 发送的频道ID
+    channelId: "aa"
+  # 切换服务器相关的事件
+  ChanceServer:
+    # 是否启用
+    Enable: true
+    # 消息格式（%lastServer%代表切换之前的服务器，%server%代表现在的服务器，%player%代表玩家的显示名）
+    format: "%player%退出了%lastServer%子服务器并加入了%server%子服务器"
+    # 发送的频道ID
+    channelId: "aa"
+  # 进服消息提醒（发送到Dodo频道）
+  JoinMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%player%代表玩家的显示名）
+    format: "%player%进入了服务器"
+    # 发送的频道ID
+    channelId: "aa"
+  # 退服消息提醒（发送到Dodo频道）
+  LeaveMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%player%代表玩家的显示名）
+    format: "%player%退出了服务器"
+    # 发送的频道ID
+    channelId: "aa"
+  # 机器人机器人鉴权Token
+  botToken: "token"
+  # 机器人唯一标识
+  botClientId: "clientId"
+  #群号
+  islandId: "1111"
+  # 替换服务器名字(如果没有就用服名)
+  replaceServerName:
+    # 服务器1
+    server1: "服务器1"
+
