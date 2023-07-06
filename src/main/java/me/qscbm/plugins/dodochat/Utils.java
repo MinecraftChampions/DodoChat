@@ -91,7 +91,6 @@ public class Utils {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println(jsonObject);
                 tempString = tempString.replaceAll(t,"@" + jsonObject.getJSONObject("data").getString("nickName"));
             }
         }

@@ -1,14 +1,11 @@
 package me.qscbm.plugins.dodochat;
 
-import com.google.common.io.ByteArrayDataInput;
 import com.velocitypowered.api.event.AwaitingEventExecutor;
 import com.velocitypowered.api.event.EventTask;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
-import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

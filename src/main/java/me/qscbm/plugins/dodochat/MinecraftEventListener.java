@@ -29,9 +29,18 @@ public class MinecraftEventListener {
         jsonObject.put("server",server.getServerInfo().getName());
         jsonObject.put("lastServer",lastSever.getServerInfo().getName());
         jsonObject.put("player", player.getUsername());
+        String channelId = DodoChat.getConfiguration().getString("settings.ChanceServer.channelId." + server.getServerInfo().getName());
+        if (channelId.isEmpty()) {
+            DodoChat.getINSTANCE().getLogger().error("子服" + server.getServerInfo().getName() + "没有指定Dodo频道");
+        }
+        String channelId1 = DodoChat.getConfiguration().getString("settings.ChanceServer.channelId." + lastSever.getServerInfo().getName());
+        if (channelId1.isEmpty()) {
+            DodoChat.getINSTANCE().getLogger().error("子服" + lastSever.getServerInfo().getName() + "没有指定Dodo频道");
+        }
         String message = Utils.parsePlaceholders(DodoChat.getConfiguration().getString("settings.ChanceServer.format"),jsonObject);
         try {
-            ChannelMessageApi.sendTextMessage(DodoChat.authorization,DodoChat.getConfiguration().getString("settings.ChanceServer.channelId"),message);
+            ChannelMessageApi.sendTextMessage(DodoChat.authorization,channelId1,message);
+            ChannelMessageApi.sendTextMessage(DodoChat.authorization,channelId,message);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -78,9 +87,13 @@ public class MinecraftEventListener {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("sender", player.getUsername());
         jsonObject.put("message", event.getMessage());
+        String channelId = DodoChat.getConfiguration().getString("settings.SendServerMessage.channelId." + player.getCurrentServer().get().getServerInfo().getName());
+        if (channelId.isEmpty()) {
+            DodoChat.getINSTANCE().getLogger().error("子服" + player.getCurrentServer().get().getServerInfo().getName() + "没有指定Dodo频道");
+        }
         String message = Utils.parsePlaceholders(DodoChat.getConfiguration().getString("settings.SendServerMessage.format"),jsonObject);
         try {
-            ChannelMessageApi.sendTextMessage(DodoChat.authorization,DodoChat.getConfiguration().getString("settings.SendServerMessage.channelId"),message);
+            ChannelMessageApi.sendTextMessage(DodoChat.authorization,channelId,message);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
