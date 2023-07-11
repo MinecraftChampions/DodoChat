@@ -5,11 +5,15 @@ import io.github.minecraftchampions.dodoopenjava.configuration.ConfigurationSect
 import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.PersonalMessageEvent;
+import me.qscbm.plugins.dodochat.dodocommands.Verify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 public class DodoEventListener implements Listener {
@@ -18,7 +22,7 @@ public class DodoEventListener implements Listener {
         if (!DodoChat.enableDodoMessage) {
             return;
         }
-        ConfigurationSection section = DodoChat.getConfiguration().getConfigurationSection("settings.SendDodoMessage.channelId");
+        ConfigurationSection section = DodoChat.getConfiguration().getConfigurationSection("settings.Servers");
         section.getKeys(true).forEach(server -> {
             if (section.get(server) instanceof String channelId) {
                 if (channelId.equals(event.getChannelId())) {
@@ -41,5 +45,21 @@ public class DodoEventListener implements Listener {
                 }
             }
         });
+    }
+
+    @EventHandler
+    public void onPersonalMessageEvent(PersonalMessageEvent e) {
+        if (Objects.equals(e.getMessageIntType(), 1)) {
+            if (e.getMessageBody().getString("content").indexOf("/") == 0) {
+                String command = e.getMessageBody().getString("content").replaceFirst("/", "");
+                List<String> Command = new ArrayList(List.of(command.split(" ")));
+                String MainCommand = Command.get(0);
+                Command.remove(0);
+                String[] args = Command.toArray(new String[Command.size()]);
+                if  (Objects.equals(MainCommand, "verify")) {
+                    Verify.run(e,args);
+                }
+            }
+        }
     }
 }

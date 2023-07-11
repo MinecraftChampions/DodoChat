@@ -1,14 +1,9 @@
 package me.qscbm.plugins.dodochat;
 
-import com.google.gson.JsonObject;
-import com.velocitypowered.api.proxy.Player;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelApi;
-import io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
-import io.github.minecraftchampions.dodoopenjava.configuration.Configuration;
 import io.github.minecraftchampions.dodoopenjava.configuration.ConfigurationSection;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

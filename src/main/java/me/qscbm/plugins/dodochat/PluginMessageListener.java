@@ -4,10 +4,8 @@ import com.velocitypowered.api.event.AwaitingEventExecutor;
 import com.velocitypowered.api.event.EventTask;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.proxy.ServerConnection;
-import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class PluginMessageListener implements AwaitingEventExecutor<PluginMessageEvent> {
@@ -27,11 +25,6 @@ public class PluginMessageListener implements AwaitingEventExecutor<PluginMessag
 
             final byte[] input = event.getData();
             String message = new String(input, StandardCharsets.UTF_8);
-            try {
-                ChannelMessageApi.sendTextMessage(DodoChat.authorization,DodoChat.getConfiguration().getString("settings.SendServerMessage.channelId"),message);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         });
     }
 }
