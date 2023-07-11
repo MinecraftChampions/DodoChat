@@ -108,7 +108,7 @@ public class DodoChat {
         logger.info("注册命令解析器中");
         server.getCommandManager().register("dodochat",new MinecraftCommand(),"dc","dodo");
         Command.registerCommand(authorization,new Help(),new Bind(),new Status(),new Verify(),new BindList(),new Unbind(),
-                new ResetPassword(),new Call(),new GetBanHistory());
+                new ResetPassword(),new Call(),new GetBanHistory(),new MInfo());
         logger.info("连接MySQL数据库中");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
