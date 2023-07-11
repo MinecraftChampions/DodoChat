@@ -43,7 +43,7 @@ settings:
   dodoCommandChannelId: "11"
   # 数据库设置
   MySQL:
-    # 地址(不用指定数据库)
+    # 地址(不用指定数据库，数据库:dodochat)
     url: jdbc:mysql://localhost:3306
     #账户
     name: root
