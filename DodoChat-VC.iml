@@ -82,7 +82,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.luckperms:api:5.4" level="project" />
-    <orderEntry type="library" name="Maven: space.arim.libertybans:bans-api:1.1.0-M3" level="project" />
-    <orderEntry type="library" name="Maven: space.arim.omnibus:omnibus:1.1.0-RC2" level="project" />
   </component>
 </module>
