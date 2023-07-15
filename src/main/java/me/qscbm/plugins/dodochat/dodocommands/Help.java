@@ -33,7 +33,7 @@ public class Help implements CommandExecutor {
 /blist                                   - 获得绑定的账号列表
 /unbind <游戏名>              - 解除绑定账号
 /resetpassword <游戏名>  - 重置账号密码
-/getbanhistory <游戏名>   - 获取封禁记录
+/getbanhistory <游戏名>   - 获取处罚记录
 /call                                    - 获取身份组
 /minfo                                - 获取玩家信息
                 """;
@@ -48,7 +48,7 @@ public class Help implements CommandExecutor {
 /blist                                   - 获得绑定的账号列表
 /unbind <游戏名>              - 解除绑定账号
 /resetpassword <游戏名>  - 重置账号密码
-/getbanhistory <游戏名>   - 获取封禁记录
+/getbanhistory <游戏名>   - 获取处罚记录
 /call                                    - 获取身份组
                  */
                 ChannelMessageApi.sendTextMessage(DodoChat.authorization,commandSender.getChannelId(), message);
