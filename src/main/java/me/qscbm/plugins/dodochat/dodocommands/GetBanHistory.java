@@ -60,7 +60,6 @@ public class GetBanHistory implements CommandExecutor {
              +----+------+-------------+------------------------------------+--------------------------------+------------------------------------+-------------------+-------+------------+------------+
              */
             ResultSet rs = DodoChat.banStmt.executeQuery("select * from libertybans_simple_history where victim_uuid=" + uuidSB);
-            System.out.println(uuidSB);
             StringBuilder message = new StringBuilder("该玩家处罚记录:");
             while(rs.next()) {
                 long end = rs.getLong("end");
