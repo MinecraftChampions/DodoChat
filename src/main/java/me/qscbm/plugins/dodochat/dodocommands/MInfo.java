@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * IMC.RE服务器玩家信息
+ */
 public class MInfo implements CommandExecutor {
     @Override
     public String getMainCommand() {

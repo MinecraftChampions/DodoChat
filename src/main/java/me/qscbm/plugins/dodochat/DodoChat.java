@@ -102,6 +102,8 @@ public class DodoChat {
         enableJoinMessage = getConfiguration().getBoolean("settings.JoinMessage.Enable");
         enableLeaveMessage = getConfiguration().getBoolean("settings.LeaveMessage.Enable");
         logger.info("注册事件监听器中");
+        // 注册插件消息频道，理论上想要扩展就是在spigot写扩展通信，代理端转发
+        // 目前没有实际用法
         server.getChannelRegistrar().register(MODERN_CHANNEL, LEGACY_CHANNEL);
         server.getEventManager().register(this, new MinecraftEventListener());
         EventManage.registerEvents(new DodoEventListener(),authorization); //注册DodoOpenJava事件
@@ -109,6 +111,11 @@ public class DodoChat {
         server.getCommandManager().register("dodochat",new MinecraftCommand(),"dc","dodo");
         Command.registerCommand(authorization,new Help(),new Bind(),new Status(),new Verify(),new BindList(),new Unbind(),
                 new ResetPassword(),new Call(),new GetBanHistory(),new MInfo());
+        /*
+        非IMC.RE服务器使用
+        Command.registerCommand(authorization,new Help(),new Bind(),new Status(),new Verify(),new BindList(),new Unbind(),
+                new ResetPassword(),new Call(),new GetBanHistory());
+        */
         logger.info("连接MySQL数据库中");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -117,6 +124,15 @@ public class DodoChat {
             stmt.execute("create database if not exists dodochat");
             conn =  DriverManager.getConnection(getConfiguration().getString("settings.MySQL.url") + "/dodochat",getConfiguration().getString("settings.MySQL.name"),getConfiguration().getString("settings.MySQL.password"));
             banConn = DriverManager.getConnection("jdbc:mysql://" + getConfiguration().getString("settings.LibertyBansData.host") + ":" + getConfiguration().getString("settings.LibertyBansData.port") + "/" + getConfiguration().getString("settings.LibertyBansData.database"),getConfiguration().getString("settings.LibertyBansData.user"),getConfiguration().getString("settings.LibertyBansData.password"));
+            /*
+                    绑定玩家的数据库格式
+                    其实可以不搞主键，可以重复循环获取，有兴趣可以改一下
+                   ---------- ---------------------------------------------------------------------------------
+                   |   id    |                                    text                                         |
+                   ---------- ----------------------------------------------------------------------------------
+                   |  123456 | ["F6503A7C-D2EA-F622-D979-C1A1F0A2FDD5","453DD8CE-E48F-6ACD-2958-44323ECF4439"] |
+                   ---------- ----------------------------------------------------------------------------------
+             */
             String sql =
                     """
                             create table if not exists users (
@@ -134,6 +150,7 @@ public class DodoChat {
         }
         luckPerms = LuckPermsProvider.get();
         INSTANCE = this;
+        // 获取实例
         limboAuth = (LimboAuth) DodoChat.getINSTANCE().getServer().getPluginManager().getPlugin("limboauth").get().getInstance().get();
         logger.info("DodoChat已启动");
     }
