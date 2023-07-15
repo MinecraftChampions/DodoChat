@@ -34,7 +34,7 @@ import java.sql.Statement;
 @Plugin(
         id = "dodochat",
         name = "DodoChat",
-        version = "1.0-SNAPSHOT",
+        version = "1.0",
         dependencies = {
                 @Dependency(id = "limboauth"),
                 @Dependency(id = "luckperms"),

@@ -31,7 +31,7 @@ public class Status implements CommandExecutor {
                     "IMC.RE机器人\n" +
                     "状态:运行中\n"+
                     "DodoId:" + dodoId+"\n" +
-                    "机器人版本:1.0-快照版\n" +
+                    "机器人版本:1.0\n" +
                     "Made by qscbm187531 and DongShaoNB");
         } catch (IOException e) {
             throw new RuntimeException(e);
