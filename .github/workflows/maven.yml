@@ -27,7 +27,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - run: mkdir staging && cp target/DodoChat-VC-[[:digit:]].[[:digit:]].jar staging/
+    - run: mkdir staging && cp target/DodoChat-[[:digit:]].[[:digit:]].jar staging/
     - uses: actions/upload-artifact@v2
       if: github.event_name != 'pull_request'
       with:
