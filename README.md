@@ -1,4 +1,4 @@
-## DodoChat-Velocity
+## DodoChat
 ### 简介
 DodoChat是一款Minecraft与Dodo频道消息互通的插件
 ### 注意
