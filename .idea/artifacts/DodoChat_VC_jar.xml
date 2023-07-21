@@ -2,7 +2,7 @@
   <artifact type="jar" name="DodoChat-VC:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/DodoChat_VC_jar</output-path>
     <root id="archive" name="DodoChat-VC.jar">
-      <element id="module-output" name="DodoChat-VC" />
+      <element id="module-output" name="DodoChat" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/top/qscraft/dodoopenjava/core/2.3.5/core-2.3.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.14.9/okhttp-3.14.9.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" path-in-jar="/" />
