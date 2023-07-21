@@ -1,0 +1,13 @@
+name: DodoChat
+version: '1.1'
+main: me.qscbm.plugins.dodochat.spigot.DodoChat
+api-version: '1.17'
+depend:
+  - LuckPerms
+commands:
+  dodochat:
+    aliases:
+      - "dc"
+      - "dchat"
+    usage: "/dochat <reload|help|send>"
+    description: "DodoChat."

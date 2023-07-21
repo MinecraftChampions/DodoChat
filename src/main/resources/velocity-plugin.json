@@ -1,9 +1,9 @@
 {
   "id": "dodochat",
   "name": "DodoChat",
-  "version": "1.0",
+  "version": "1.1",
   "url": "https://github.com/MinecraftChampions/",
   "authors": ["qscbm187531"],
   "dependencies": [{"id":"limboauth","optional":false},{"id":"luckperms","optional":false},{"id":"libertybans","optional":false}],
-  "main": "me.qscbm.plugins.dodochat.DodoChat"
+  "main": "me.qscbm.plugins.dodochat.velocity.DodoChat"
 }

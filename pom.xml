@@ -6,7 +6,7 @@
 
     <groupId>me.qscbm.plugins</groupId>
     <artifactId>DodoChat-VC</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>DodoChat</name>
@@ -14,7 +14,7 @@
     <properties>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dodoVersion>2.3.7</dodoVersion>
+        <dodoVersion>2.3.9</dodoVersion>
     </properties>
 
     <build>
@@ -159,12 +159,12 @@
 
     <repositories>
         <repository>
-            <id>arim-mvn-agpl3</id>
-            <url>https://mvn-repo.arim.space/affero-gpl3/</url>
-        </repository>
-        <repository>
             <id>jitpack</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>arim-mvn-agpl3</id>
+            <url>https://mvn-repo.arim.space/affero-gpl3/</url>
         </repository>
         <repository>
             <id>papermc-repo</id>
@@ -232,6 +232,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.elytrium.limboauth</groupId>
@@ -245,6 +246,18 @@
             <artifactId>api</artifactId>
             <version>5.4</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.17.1-R0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>space.arim.libertybans</groupId>
+            <artifactId>api</artifactId>
+            <version>1.1.0-M3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/LibertyBans_Release-1.1.0-M3.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
