@@ -4,6 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
 import io.github.minecraftchampions.dodoopenjava.configuration.ConfigurationSection;
+import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import me.qscbm.plugins.dodochat.velocity.DodoChat;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -61,11 +62,19 @@ public class Utils {
 
     public static String replaceString(String s) {
         String tempString = s;
-        tempString = s.replaceAll("\\*\\*([^*]+)\\*\\*","<bold>$1</bold>");
-        tempString = tempString.replaceAll("\\*([^*]+)\\*","<italic>$1</italic>");
-        tempString = tempString.replaceAll("__([^_]+)__","<underlined>$1</underlined>");
-        tempString = tempString.replaceAll("\n>","\n");
-        tempString = tempString.replaceAll("\\|\\|([^|]+)\\|\\|","<hover:show_text:'$1'>[悬浮至此可见]</hover>");
+        if (Platform.isVelocity) {
+            tempString = s.replaceAll("\\*\\*([^*]+)\\*\\*", "<bold>$1</bold>");
+            tempString = tempString.replaceAll("\\*([^*]+)\\*", "<italic>$1</italic>");
+            tempString = tempString.replaceAll("__([^_]+)__", "<underlined>$1</underlined>");
+            tempString = tempString.replaceAll("\n>", "\n");
+            tempString = tempString.replaceAll("\\|\\|([^|]+)\\|\\|", "<hover:show_text:'$1'>[悬浮至此可见]</hover>");
+        } else {
+            tempString = s.replaceAll("\\*\\*([^*]+)\\*\\*", "§l$1§r>");
+            tempString = tempString.replaceAll("\\*([^*]+)\\*", "§o$1§r");
+            tempString = tempString.replaceAll("__([^_]+)__", "§n$1§r");
+            tempString = tempString.replaceAll("\n>", "\n");
+            tempString = tempString.replaceAll("\\|\\|([^|]+)\\|\\|", "$1");
+        }
         tempString = tempString.replaceAll("~~([^~]+)~~","$1");
         tempString = tempString.replaceAll("```([^`]+)```","$1");
         tempString = tempString.replaceAll("<#\\d+>","[跳转频道]");
