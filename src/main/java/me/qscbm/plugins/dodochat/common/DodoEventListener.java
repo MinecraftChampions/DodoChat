@@ -21,6 +21,9 @@ public class DodoEventListener implements Listener {
             return;
         }
         ConfigurationSection section = Config.getConfiguration().getConfigurationSection("settings.Servers");
+        if (section == null) {
+            return;
+        }
         section.getKeys(false).forEach(server -> {
             if (section.get(server) instanceof String channelId) {
                 if (channelId.equals(event.getChannelId())) {
