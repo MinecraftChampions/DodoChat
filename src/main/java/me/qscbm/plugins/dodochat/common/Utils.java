@@ -46,12 +46,7 @@ public class Utils {
         JSONArray jsonArray = json.getJSONArray("words");
         jsonArray.forEach(object -> {
             if (object instanceof String str) {
-                int l = str.length();
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0;i<l;i++) {
-                    sb.append("*");
-                }
-                tempStr[0] = tempStr[0].replaceAll(str, sb.toString());
+                tempStr[0] = tempStr[0].replaceAll(str, "***");
             }
         });
         tempString = tempStr[0];

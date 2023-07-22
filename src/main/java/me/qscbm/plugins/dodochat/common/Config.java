@@ -30,7 +30,7 @@ public class Config {
             System.out.println("[DodoChat]检测到未更改配置文件，请及时更改配置文件");
         }
         File dataFile = configFolder.resolve("database.json").toFile();
-        if (!configFile.exists()) {
+        if (!dataFile.exists()) {
             try {
                 ConfigUtil.copyResourcesToFile("database.json", dataFile.getPath());
             } catch (IOException e) {

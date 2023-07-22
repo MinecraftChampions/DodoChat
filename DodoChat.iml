@@ -51,14 +51,14 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-yaml:3.7.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-gson:3.7.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.ben-manes.caffeine:caffeine:3.1.5" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:core:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:event-core:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:command:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:permissions:2.3.9" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:core:2.4.1" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:event-core:2.4.1" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:command:2.4.1" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:permissions:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.tomlj:tomlj:1.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.antlr:antlr4-runtime:4.11.1" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:event-websocket:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:configuration:2.3.9" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:event-websocket:2.4.1" level="project" />
+    <orderEntry type="library" name="Maven: top.qscraft.dodoopenjava:configuration:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:2.0" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:24.0.1" level="project" />
