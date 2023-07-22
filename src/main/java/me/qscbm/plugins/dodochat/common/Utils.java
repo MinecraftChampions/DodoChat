@@ -35,21 +35,21 @@ public class Utils {
         }
         if (jsonObject.keySet().contains("message")) {
             replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("message"));
+            String[] tempStr = {replacement};
+            JSONObject json = Config.getData();
+            JSONArray jsonArray = json.getJSONArray("words");
+            jsonArray.forEach(object -> {
+                if (object instanceof String str) {
+                    tempStr[0] = tempStr[0].replaceAll(str, "***");
+                }
+            });
+            replacement = tempStr[0];
             tempString = tempString.replaceAll("%message%", replacement);
         }
         if (jsonObject.keySet().contains("lastServer")) {
             replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("lastServer"));
             tempString = tempString.replaceAll("%lastServer%", replacement);
         }
-        String[] tempStr = {tempString};
-        JSONObject json = Config.getData();
-        JSONArray jsonArray = json.getJSONArray("words");
-        jsonArray.forEach(object -> {
-            if (object instanceof String str) {
-                tempStr[0] = tempStr[0].replaceAll(str, "***");
-            }
-        });
-        tempString = tempStr[0];
         return tempString;
     }
 
