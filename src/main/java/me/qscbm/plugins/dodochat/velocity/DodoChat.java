@@ -9,6 +9,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import io.github.minecraftchampions.dodoopenjava.command.Command;
 import io.github.minecraftchampions.dodoopenjava.event.EventManage;
+import io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.DodoEventListener;
@@ -83,6 +84,8 @@ public class DodoChat {
         logger.info("重载配置文件中");
         Config.init();
         logger.info("DodoChat已重载");
+        EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
+        EventTrigger.main(Config.authorization);
     }
 
     @Subscribe
