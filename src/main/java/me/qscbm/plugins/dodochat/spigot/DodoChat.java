@@ -19,7 +19,7 @@ public class DodoChat extends JavaPlugin {
         Platform.isVelocity = false;
         Hook.init();
         Config.init();
-        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"));
+        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
         Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new Verify(),
                 new BindList(),new Unbind(), new Call(),new MInfo());
@@ -45,7 +45,7 @@ public class DodoChat extends JavaPlugin {
     public void reload() {
         getLogger().info("重载配置文件中");
         Config.init();
-        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"));
+        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
         EventTrigger.main(Config.authorization);
         getLogger().info("DodoChat已重载");

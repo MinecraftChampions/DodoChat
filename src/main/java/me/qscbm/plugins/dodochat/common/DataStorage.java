@@ -11,13 +11,10 @@ public class DataStorage {
     public static Statement stmt = null;
 
 
-    public static void init(String url,String name,String password) {
+    public static void init(String url,String name,String password,String database) {
        try {
            Class.forName("com.mysql.cj.jdbc.Driver");
-           conn = DriverManager.getConnection(url,name,password);
-           stmt = conn.createStatement();
-           stmt.execute("create database if not exists dodochat");
-           conn =  DriverManager.getConnection(url + "/dodochat",name,password);
+           conn =  DriverManager.getConnection(url + "/" + database,name,password);
             /*
                     绑定玩家的数据库格式
                     其实可以不搞主键，可以重复循环获取，有兴趣可以改一下

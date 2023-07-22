@@ -48,8 +48,10 @@ settings:
   dodoCommandChannelId: "11"
   # 数据库设置
   MySQL:
-    # 地址(不用指定数据库，数据库:dodochat)
+    # 地址
     url: jdbc:mysql://localhost:3306
+    # 数据库
+    database: "dodochat"
     #账户
     name: root
     # 密码
@@ -68,3 +70,5 @@ settings:
     - Group: "Default"
       # 身份组id
       roleId: "111"
+  # 封禁事件转发频道id
+  LibertyBansListenerMessage: "111"

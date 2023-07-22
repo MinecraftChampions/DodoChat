@@ -41,6 +41,7 @@ public class Call implements CommandExecutor {
         ResultSet rs;
         List<String> groupList = new ArrayList<>();
         try {
+            DataStorage.conn.prepareStatement("insert ignore into users values("+ commandSender.getSenderDodoSourceId() + ",'[]')").executeUpdate();
             rs = DataStorage.stmt.executeQuery("select * from users where id = "+commandSender.getSenderDodoSourceId());
             rs.next();
             String data = rs.getString("data");

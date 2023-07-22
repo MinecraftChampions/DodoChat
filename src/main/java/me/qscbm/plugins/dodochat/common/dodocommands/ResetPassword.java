@@ -8,15 +8,12 @@ import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import me.qscbm.plugins.dodochat.velocity.DodoChat;
-import net.elytrium.limboauth.event.AuthUnregisterEvent;
 import org.json.JSONArray;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class ResetPassword implements CommandExecutor {
@@ -54,9 +51,8 @@ public class ResetPassword implements CommandExecutor {
                 ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"你没有绑定这个账号");
                 return;
             }
-            DodoChat.limboAuth.removePlayerFromCache(LuckPermsHook.luckPerms.getUserManager().lookupUsername(UUID.fromString(uuid)).get());
-            DodoChat.limboAuth.getPlayerDao().deleteById(LuckPermsHook.luckPerms.getUserManager().lookupUsername(UUID.fromString(uuid)).get().toLowerCase(Locale.ROOT));
-            DodoChat.getINSTANCE().getServer().getEventManager().fireAndForget(new AuthUnregisterEvent(strings[0]));
+
+            DodoChat.getINSTANCE().getServer().getCommandManager().executeAsync(DodoChat.getINSTANCE().getServer().getConsoleCommandSource(),"forceunregister " + strings[0]);
             ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"已重置密码，请及时登录");
         } catch (SQLException | IOException | InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);

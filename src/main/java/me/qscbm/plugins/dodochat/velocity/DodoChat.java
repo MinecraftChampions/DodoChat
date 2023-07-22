@@ -31,8 +31,6 @@ import org.slf4j.Logger;
         authors = {"qscbm187531"}
 )
 public class DodoChat {
-
-    public static LimboAuth limboAuth = null;
     private ProxyServer server;
     private final Logger logger;
     @Inject
@@ -68,9 +66,7 @@ public class DodoChat {
                 new ResetPassword(),new Call(),new GetBanHistory());
         */
         logger.info("连接MySQL数据库中");
-        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"));
-        limboAuth = (LimboAuth) DodoChat.getINSTANCE().getServer().getPluginManager().getPlugin("limboauth").get().getInstance().get();
-        // 获取实例
+        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
         logger.info("DodoChat已启动");
     }
 
@@ -84,6 +80,7 @@ public class DodoChat {
         logger.info("重载配置文件中");
         Config.init();
         logger.info("DodoChat已重载");
+        DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
         EventTrigger.main(Config.authorization);
     }
