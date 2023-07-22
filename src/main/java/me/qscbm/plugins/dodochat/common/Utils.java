@@ -41,6 +41,20 @@ public class Utils {
             replacement = java.util.regex.Matcher.quoteReplacement(jsonObject.getString("lastServer"));
             tempString = tempString.replaceAll("%lastServer%", replacement);
         }
+        String[] tempStr = {tempString};
+        JSONObject json = Config.getData();
+        JSONArray jsonArray = json.getJSONArray("words");
+        jsonArray.forEach(object -> {
+            if (object instanceof String str) {
+                int l = str.length();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0;i<l;i++) {
+                    sb.append("*");
+                }
+                tempStr[0] = tempStr[0].replaceAll(str, sb.toString());
+            }
+        });
+        tempString = tempStr[0];
         return tempString;
     }
 
