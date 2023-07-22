@@ -7,6 +7,7 @@ settings:
     # spigot子服使用的消息格式
     spigot-format: "§f§l『§e§lDodo消息§f§l』§r §b%sender% §7-> §f%message%"
     # 消息格式（%message%代表消息内容，%sender%代表发送者的群昵称，使用MiniMessage）
+    # spigot端就别改了
     # https://adventure-docs.minecraft.kim/minimessage.html
     format: "<bold>『<yellow>Dodo消息</yellow>』</bold> <aqua>%sender%</aqua> <gray>-></gray> %message%"
   # 服内消息转发相关
