@@ -25,9 +25,9 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
                     time = "永久封禁";
                 } else {
                     if (timeLong/24/60/60 >= 1) {
-                        time = "封禁" + timeLong / 24d / 60d / 60d + "天";
+                        time = "封禁" + timeLong/1000 / 24d / 60d / 60d + "天";
                     } else {
-                        time = "封禁" + timeLong / 60d / 60d + "小时";
+                        time = "封禁" + timeLong/1000 / 60d / 60d + "小时";
                     }
                 }
             }
@@ -36,9 +36,9 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
                     time = "永久禁言";
                 } else {
                     if (timeLong/24/60/60 >= 1) {
-                        time = "禁言" + timeLong / 24d / 60d / 60d + "天";
+                        time = "禁言" + timeLong/1000 / 24d / 60d / 60d + "天";
                     } else {
-                        time = "禁言" + timeLong / 60d / 60d + "小时";
+                        time = "禁言" + timeLong/1000 / 60d / 60d + "小时";
                     }
                 }
             }

@@ -64,9 +64,9 @@ public class GetBanHistory implements CommandExecutor {
                                 time = "永久封禁";
                             } else {
                                 if (end-start/24/60/60 >= 1) {
-                                    time = "封禁" + (end - start) / 24d / 60d / 60d + "天";
+                                    time = "封禁" + (end - start)/1000 / 24d / 60d / 60d + "天";
                                 } else {
-                                    time = "封禁" + (end - start) / 60d / 60d + "小时";
+                                    time = "封禁" + (end - start)/1000 / 60d / 60d + "小时";
                                 }
                             }
                         }
@@ -75,9 +75,9 @@ public class GetBanHistory implements CommandExecutor {
                                 time = "永久禁言";
                             } else {
                                 if (end-start/24/60/60 >= 1) {
-                                    time = "禁言" + (end - start) / 24d / 60d / 60d + "天";
+                                    time = "禁言" + (end - start)/1000 / 24d / 60d / 60d + "天";
                                 } else {
-                                    time = "禁言" + (end - start) / 60d / 60d + "小时";
+                                    time = "禁言" + (end - start)/1000 / 60d / 60d + "小时";
                                 }
                             }
                         }
