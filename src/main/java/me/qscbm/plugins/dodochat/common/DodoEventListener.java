@@ -17,12 +17,18 @@ import java.util.Set;
 public class DodoEventListener implements Listener {
     @EventHandler
     public void onMessageEvent(MessageEvent event) {
+        System.out.println("检测通过");
         if (!Config.enableDodoMessage) {
             return;
         }
+        System.out.println("启用通过");
+        System.out.println(event.getJsonString());
         ConfigurationSection section = Config.getConfiguration().getConfigurationSection("settings.Servers");
         section.getKeys(false).forEach(server -> {
+            System.out.println(server);
             if (section.get(server) instanceof String channelId) {
+                System.out.println(channelId);
+                System.out.println(event.getChannelId());
                 if (channelId.equals(event.getChannelId())) {
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("sender",event.getMemberNickName());
@@ -42,6 +48,8 @@ public class DodoEventListener implements Listener {
                     } else {
                         message = Utils.replaceString(Utils.parsePlaceholders(Config.getConfiguration().getString("settings.SendDodoMessage.format"), jsonObject));
                     }
+                    System.out.println(message);
+                    System.out.println(players);
                     players.forEach(player -> Platform.sendMessage(player,message));
                 }
             }
