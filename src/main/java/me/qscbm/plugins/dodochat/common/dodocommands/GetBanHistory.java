@@ -63,14 +63,22 @@ public class GetBanHistory implements CommandExecutor {
                             if (end == 0) {
                                 time = "永久封禁";
                             } else {
-                                time = "封禁" + (end-start)/24/60/60 + "天";
+                                if (end-start/24/60/60 >= 1) {
+                                    time = "封禁" + (end - start) / 24d / 60d / 60d + "天";
+                                } else {
+                                    time = "封禁" + (end - start) / 60d / 60d + "小时";
+                                }
                             }
                         }
                         case MUTE -> {
                             if (end == 0) {
                                 time = "永久禁言";
                             } else {
-                                time = "禁言" + (end-start)/24/60/60 + "天";
+                                if (end-start/24/60/60 >= 1) {
+                                    time = "禁言" + (end - start) / 24d / 60d / 60d + "天";
+                                } else {
+                                    time = "禁言" + (end - start) / 60d / 60d + "小时";
+                                }
                             }
                         }
                         case WARN -> time = "警告一次";

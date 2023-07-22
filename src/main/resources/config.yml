@@ -2,6 +2,10 @@
 settings:
   # Dodo消息转发相关
   SendDodoMessage:
+    # 使用颜色代码身份组id列表
+    useColor:
+      - "112"
+      - "1123"
     # 是否启用
     Enable: true
     # spigot子服使用的消息格式

@@ -59,6 +59,9 @@ public class MinecraftEventListener {
             return;
         }
         Player player = event.getPlayer();
+        if (player.getCurrentServer().isEmpty()) {
+            return;
+        }
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("player", player.getUsername());
         String channelId1 = Config.getConfiguration().getString("settings.Servers." + player.getCurrentServer().get().getServerInfo().getName());

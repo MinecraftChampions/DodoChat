@@ -151,7 +151,6 @@ public class Utils {
                 tempString = tempString.replaceAll(t,"@" + jsonObject.getJSONObject("data").getString("channelName"));
             }
         }
-        tempString = tempString.replaceAll("§.","");
         return tempString;
     }
 }
