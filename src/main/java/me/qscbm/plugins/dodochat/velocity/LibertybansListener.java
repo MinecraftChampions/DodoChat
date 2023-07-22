@@ -10,6 +10,7 @@ import space.arim.libertybans.api.punish.DraftPunishment;
 import space.arim.omnibus.events.EventConsumer;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.concurrent.ExecutionException;
 
 public class LibertybansListener implements EventConsumer<PunishEvent> {
@@ -25,9 +26,15 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
                     time = "永久封禁";
                 } else {
                     if (timeLong/1000/24/60/60 >= 1) {
-                        time = "封禁" + timeLong/1000 / 24d / 60d / 60d + "天";
+                        double d = timeLong / 1000d / 24d / 60d / 60d;
+                        NumberFormat nf = NumberFormat.getNumberInstance();
+                        nf.setMaximumFractionDigits(2);
+                        time = "封禁" + nf.format(d) + "天";
                     } else {
-                        time = "封禁" + timeLong/1000 / 60d / 60d + "小时";
+                        double d = timeLong / 1000d / 60d / 60d;
+                        NumberFormat nf = NumberFormat.getNumberInstance();
+                        nf.setMaximumFractionDigits(2);
+                        time = "封禁" + nf.format(d) + "小时";
                     }
                 }
             }
@@ -36,9 +43,15 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
                     time = "永久禁言";
                 } else {
                     if (timeLong/1000/24/60/60 >= 1) {
-                        time = "禁言" + timeLong/1000 / 24d / 60d / 60d + "天";
+                        double d = timeLong / 1000d / 24d / 60d / 60d;
+                        NumberFormat nf = NumberFormat.getNumberInstance();
+                        nf.setMaximumFractionDigits(2);
+                        time = "禁言" + nf.format(d) + "天";
                     } else {
-                        time = "禁言" + timeLong/1000 / 60d / 60d + "小时";
+                        double d = timeLong / 1000d / 60d / 60d;
+                        NumberFormat nf = NumberFormat.getNumberInstance();
+                        nf.setMaximumFractionDigits(2);
+                        time = "禁言" + nf.format(d) + "小时";
                     }
                 }
             }

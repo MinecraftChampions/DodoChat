@@ -6,6 +6,7 @@ import io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.DodoEventListener;
+import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.dodocommands.*;
 import me.qscbm.plugins.dodochat.common.hook.Hook;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
@@ -20,9 +21,6 @@ public class DodoChat extends JavaPlugin {
         Hook.init();
         Config.init();
         DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
-        EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
-        Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new Verify(),
-                new BindList(),new Unbind(), new Call(),new MInfo());
         Bukkit.getPluginManager().registerEvents(new MinecraftEventListener(),this);
         Bukkit.getPluginCommand("dodochat").setExecutor(new MinecraftCommand());
         Bukkit.getPluginCommand("dodochat").setTabCompleter(new MinecraftCommand());

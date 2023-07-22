@@ -6,6 +6,7 @@ import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
+import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import org.json.JSONArray;
 
@@ -67,13 +68,13 @@ public class Bind implements CommandExecutor {
                     stringBuilder.insert(0,"0");
                 }
             }
-            ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"已将验证码发送到账户，请注意查收，私信机器人”/verify <游戏名> <验证码>“验证");
+            ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"已将验证码发送到账户，请注意查收，请在游戏里查收验证");
             String code = stringBuilder.toString();
             String message;
             if (Platform.isVelocity) {
-                message = "<gray>服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+"</gray>";
+                message = "<gray>服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入验证:验证 验证码(不要斜杆，没人会看到，一次机会)</gray>";
             } else {
-                message = "§7服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+"";
+                message = "§7服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入验证:验证 验证码(不要斜杆，没人会看到，一次机会)";
             }
             Platform.sendMessage(strings[0],message);
             Verify.tempMap.put(strings[0], Map.of(commandSender.getSenderDodoSourceId(),code));

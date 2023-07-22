@@ -11,6 +11,7 @@ import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import space.arim.libertybans.api.PlayerVictim;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -63,10 +64,17 @@ public class GetBanHistory implements CommandExecutor {
                             if (end == 0) {
                                 time = "永久封禁";
                             } else {
-                                if (end-start/1000/24/60/60 >= 1) {
-                                    time = "封禁" + (end - start)/1000 / 24d / 60d / 60d + "天";
+                                if ((end-start)/24/60/60 >= 1) {
+                                    double d = (end - start) / 24d / 60d / 60d;
+                                    NumberFormat nf = NumberFormat.getNumberInstance();
+                                    nf.setMaximumFractionDigits(2);
+                                    time = "封禁" + nf.format(d) + "天";
                                 } else {
-                                    time = "封禁" + (end - start)/1000 / 60d / 60d + "小时";
+                                    double d = (end - start) / 60d / 60d;
+                                    NumberFormat nf = NumberFormat.getNumberInstance();
+                                    nf.setMaximumFractionDigits(2);
+                                    nf.format(d);
+                                    time = "封禁" + nf.format(d) + "小时";
                                 }
                             }
                         }
@@ -74,10 +82,18 @@ public class GetBanHistory implements CommandExecutor {
                             if (end == 0) {
                                 time = "永久禁言";
                             } else {
-                                if (end-start/1000/24/60/60 >= 1) {
-                                    time = "禁言" + (end - start)/1000 / 24d / 60d / 60d + "天";
+                                if ((end-start)/24/60/60 >= 1) {
+                                    double d = (end - start) / 24d / 60d / 60d;
+                                    NumberFormat nf = NumberFormat.getNumberInstance();
+                                    nf.setMaximumFractionDigits(2);
+                                    nf.format(d);
+                                    time = "禁言" +  nf.format(d) + "天";
                                 } else {
-                                    time = "禁言" + (end - start)/1000 / 60d / 60d + "小时";
+                                    double d = (end - start) / 60d / 60d;
+                                    NumberFormat nf = NumberFormat.getNumberInstance();
+                                    nf.setMaximumFractionDigits(2);
+                                    nf.format(d);
+                                    time = "禁言" + nf.format(d) + "小时";
                                 }
                             }
                         }
@@ -92,7 +108,7 @@ public class GetBanHistory implements CommandExecutor {
                             return;
                         }
                     }
-                    message.append("\n").append(DateUtil.format(new Date(start * 1000), DateUtil.Format_Two)).append(" -> 因").append(p.getReason()).append("被判").append(time);
+                    message.append("\n").append(DateUtil.format(new Date(start * 1000), DateUtil.Format_Four)).append(" -> 因").append(p.getReason()).append("被判").append(time);
                 });
                 try {
                     ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),message.toString());

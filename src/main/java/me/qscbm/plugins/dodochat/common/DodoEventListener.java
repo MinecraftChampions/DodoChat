@@ -6,7 +6,6 @@ import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.PersonalMessageEvent;
-import me.qscbm.plugins.dodochat.common.dodocommands.Verify;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -84,21 +83,5 @@ public class DodoEventListener implements Listener {
                 }
             }
         });
-    }
-
-    @EventHandler
-    public void onPersonalMessageEvent(PersonalMessageEvent e) {
-        if (Objects.equals(e.getMessageIntType(), 1)) {
-            if (e.getMessageBody().getString("content").indexOf("/") == 0) {
-                String command = e.getMessageBody().getString("content").replaceFirst("/", "");
-                List<String> Command = new ArrayList(List.of(command.split(" ")));
-                String MainCommand = Command.get(0);
-                Command.remove(0);
-                String[] args = Command.toArray(new String[Command.size()]);
-                if  (Objects.equals(MainCommand, "verify")) {
-                    Verify.run(e,args);
-                }
-            }
-        }
     }
 }

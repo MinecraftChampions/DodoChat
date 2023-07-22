@@ -1,6 +1,7 @@
 package me.qscbm.plugins.dodochat.velocity;
 
 import com.google.inject.Inject;
+import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
@@ -13,10 +14,10 @@ import io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.DodoEventListener;
+import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.hook.Hook;
 import me.qscbm.plugins.dodochat.common.dodocommands.*;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
-import net.elytrium.limboauth.LimboAuth;
 import org.slf4j.Logger;
 
 @Plugin(
@@ -57,8 +58,9 @@ public class DodoChat {
         server.getEventManager().register(this, new MinecraftEventListener());
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
         logger.info("注册命令解析器中");
-        server.getCommandManager().register("dodochat",new MinecraftCommand(),"dc","dodo");
-        Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new Verify(),new BindList(),new Unbind(),
+        CommandMeta meta = server.getCommandManager().metaBuilder("dpdochat").aliases("dochat","dc").plugin(this).build();
+        server.getCommandManager().register(meta,new MinecraftCommand());
+        Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new BindList(),new Unbind(),
                 new ResetPassword(),new Call(),new GetBanHistory(),new MInfo());
         /*
         非IMC.RE服务器使用
