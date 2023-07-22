@@ -25,6 +25,8 @@ public class DodoChat extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new MinecraftEventListener(),this);
         Bukkit.getPluginCommand("dodochat").setExecutor(new MinecraftCommand());
         Bukkit.getPluginCommand("dodochat").setTabCompleter(new MinecraftCommand());
+        saveDefaultConfig();
+        saveResource("database.json",false);
         getLogger().info("DodoChat已加载");
     }
 

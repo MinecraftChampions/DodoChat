@@ -27,8 +27,8 @@ public class MinecraftEventListener {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("player", player.getUsername());
         String channelId = Config.getConfiguration().getString("settings.Servers." + server.getServerInfo().getName());
-        if (channelId.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("子服" + server.getServerInfo().getName() + "没有指定Dodo频道");
+        if (channelId == null || channelId.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.JoinMessage.format"),jsonObject);
         try {
@@ -41,8 +41,8 @@ public class MinecraftEventListener {
         }
         if (lastSever != null && Config.enableLeaveMessage) {
             String channelId1 = Config.getConfiguration().getString("settings.Servers." + lastSever.getServerInfo().getName());
-            if (channelId1.isEmpty()) {
-                DodoChat.getINSTANCE().getLogger().error("子服" + lastSever.getServerInfo().getName() + "没有指定Dodo频道");
+            if (channelId1 == null || channelId1.isEmpty()) {
+                return;
             }
             message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.LeaveMessage.format"),jsonObject);
             try {
@@ -62,8 +62,8 @@ public class MinecraftEventListener {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("player", player.getUsername());
         String channelId1 = Config.getConfiguration().getString("settings.Servers." + player.getCurrentServer().get().getServerInfo().getName());
-        if (channelId1.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("子服" + player.getCurrentServer().get().getServerInfo().getName() + "没有指定Dodo频道");
+        if (channelId1 == null || channelId1.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.LeaveMessage.format"),jsonObject);
         try {
@@ -83,8 +83,8 @@ public class MinecraftEventListener {
         jsonObject.put("sender", player.getUsername());
         jsonObject.put("message", event.getMessage());
         String channelId = Config.getConfiguration().getString("settings.Servers." + player.getCurrentServer().get().getServerInfo().getName());
-        if (channelId.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("子服" + player.getCurrentServer().get().getServerInfo().getName() + "没有指定Dodo频道");
+        if (channelId == null || channelId.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.SendServerMessage.format"),jsonObject);
         try {

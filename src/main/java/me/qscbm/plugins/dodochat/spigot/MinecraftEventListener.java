@@ -23,8 +23,8 @@ public class MinecraftEventListener implements Listener {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("player", e.getPlayer().getName());
         String channelId = Config.getConfiguration().getString("settings.Servers.spigot-server");
-        if (channelId.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("没有指定Dodo频道");
+        if (channelId == null || channelId.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.JoinMessage.format"),jsonObject);
         try {
@@ -42,8 +42,8 @@ public class MinecraftEventListener implements Listener {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("player", e.getPlayer().getName());
         String channelId = Config.getConfiguration().getString("settings.Servers.spigot-server");
-        if (channelId.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("没有指定Dodo频道");
+        if (channelId == null || channelId.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.LeaveMessage.format"),jsonObject);
         try {
@@ -62,8 +62,8 @@ public class MinecraftEventListener implements Listener {
         jsonObject.put("sender", e.getPlayer().getName());
         jsonObject.put("message", e.getMessage());
         String channelId = Config.getConfiguration().getString("settings.Servers.spigot-server");
-        if (channelId.isEmpty()) {
-            DodoChat.getINSTANCE().getLogger().error("没有指定Dodo频道");
+        if (channelId == null || channelId.isEmpty()) {
+            return;
         }
         String message = Utils.parsePlaceholders(Config.getConfiguration().getString("settings.SendServerMessage.format"),jsonObject);
         try {
