@@ -72,6 +72,7 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
         } catch (InterruptedException | ExecutionException ex) {
             throw new RuntimeException(ex);
         }
+        message = message.replaceAll("§.","");
         try {
             ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.LibertyBansListenerMessage"),message);
         } catch (IOException ex) {

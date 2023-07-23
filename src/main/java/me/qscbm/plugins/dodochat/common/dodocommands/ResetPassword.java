@@ -107,7 +107,7 @@ public class ResetPassword implements CommandExecutor {
             String newPassword = stringBuilder.toString();
             DodoChat.getINSTANCE().getServer().getCommandManager().executeAsync(DodoChat.getINSTANCE().getServer().getConsoleCommandSource(),"forcechangepassword " + strings[0] + " " + newPassword);
             PersonalApi.sendPersonalMessage(Config.authorization, commandSender.getIslandSourceId(),commandSender.getSenderDodoSourceId(),"你的密码已经重置，重置后密码为: `" + newPassword + "`,请上线后及时更改密码");
-            ChannelMessageApi.sendTextMessage(Config.authorization, commandSender.getIslandSourceId(),"已重置密码，请查看私信");
+            ChannelMessageApi.sendTextMessage(Config.authorization, commandSender.getChannelId(),"已重置密码，请查看私信");
         } catch (SQLException | IOException | InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }

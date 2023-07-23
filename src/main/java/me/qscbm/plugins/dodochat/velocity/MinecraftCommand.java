@@ -112,6 +112,27 @@ public class MinecraftCommand implements SimpleCommand {
 
     @Override
     public CompletableFuture<List<String>> suggestAsync(Invocation invocation) {
-        return CompletableFuture.completedFuture(List.of());
+        String[] args = invocation.arguments();
+        if (args.length == 0|| args.length == 1) {
+            return CompletableFuture.completedFuture(List.of("help","reload","send","confirm"));
+        } else if (args.length <= 3) {
+            if (args[0].equals("send")) {
+                if (args.length == 2) {
+                    return CompletableFuture.completedFuture(List.of("频道id"));
+                } else {
+                    return CompletableFuture.completedFuture(List.of("消息"));
+                }
+            } else if (args[0].equals("confirm")) {
+                if (args.length == 2) {
+                    return CompletableFuture.completedFuture(List.of("验证码"));
+                } else {
+                    return CompletableFuture.completedFuture(List.of("你确定后面还有参数?"));
+                }
+            } else {
+                return CompletableFuture.completedFuture(List.of("你确定后面还有参数?"));
+            }
+        } else {
+            return CompletableFuture.completedFuture(List.of("你确定后面还有参数?"));
+        }
     }
 }

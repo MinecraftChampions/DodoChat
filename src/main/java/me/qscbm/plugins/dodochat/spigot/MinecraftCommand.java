@@ -59,7 +59,7 @@ public class MinecraftCommand implements TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!sender.hasPermission("dodochat.permission")) {
+        if (!sender.isOp() && !sender.hasPermission("dodochat.permission") ) {
             return false;
         }
         if (args.length == 0 || args.length>3) {
