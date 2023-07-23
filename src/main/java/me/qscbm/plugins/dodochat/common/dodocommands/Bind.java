@@ -72,9 +72,9 @@ public class Bind implements CommandExecutor {
             String code = stringBuilder.toString();
             String message;
             if (Platform.isVelocity) {
-                message = "<gray>服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入验证:验证 验证码(不要斜杆，没人会看到，一次机会)</gray>";
+                message = "<gray>服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入:'/dodochat confirm 验证码'以确认</gray>";
             } else {
-                message = "§7服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入验证:验证 验证码(不要斜杆，没人会看到，一次机会)";
+                message = "§7服务器悄悄的对你说:你收到这条消息的原因是Dodo频道中有人要绑定你的账号，如果非本人操作，请不要理会。验证码:"+code+",输入:'/dodochat confirm 验证码'以确认";
             }
             Platform.sendMessage(strings[0],message);
             Verify.tempMap.put(strings[0], Map.of(commandSender.getSenderDodoSourceId(),code));

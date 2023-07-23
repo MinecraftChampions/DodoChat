@@ -58,7 +58,7 @@ public class DodoChat {
         server.getEventManager().register(this, new MinecraftEventListener());
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
         logger.info("注册命令解析器中");
-        CommandMeta meta = server.getCommandManager().metaBuilder("dpdochat").aliases("dochat","dc").plugin(this).build();
+        CommandMeta meta = server.getCommandManager().metaBuilder("dodochat").aliases("dochat","dc").plugin(this).build();
         server.getCommandManager().register(meta,new MinecraftCommand());
         Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new BindList(),new Unbind(),
                 new ResetPassword(),new Call(),new GetBanHistory(),new MInfo());
