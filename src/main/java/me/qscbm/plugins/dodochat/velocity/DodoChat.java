@@ -83,8 +83,7 @@ public class DodoChat {
         Config.init();
         logger.info("DodoChat已重载");
         DataStorage.init(Config.getConfiguration().getString("settings.MySQL.url"),Config.getConfiguration().getString("settings.MySQL.name"),Config.getConfiguration().getString("settings.MySQL.password"),Config.getConfiguration().getString("settings.MySQL.database"));
-        EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
-        EventTrigger.main(Config.authorization);
+        EventManage.registerEvents(new DodoEventListener(),Config.authorization);
     }
 
     @Subscribe
