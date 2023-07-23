@@ -6,7 +6,6 @@ import io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.DodoEventListener;
-import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.dodocommands.*;
 import me.qscbm.plugins.dodochat.common.hook.Hook;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;

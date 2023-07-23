@@ -66,7 +66,7 @@ public class LibertybansListener implements EventConsumer<PunishEvent> {
                 return;
             }
         }
-        String message = null;
+        String message;
         try {
             message = "玩家" + LuckPermsHook.luckPerms.getUserManager().lookupUsername(((PlayerVictim)p.getVictim()).getUUID()).get() + "因" + p.getReason() + "被判" + time;
         } catch (InterruptedException | ExecutionException ex) {
