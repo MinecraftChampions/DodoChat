@@ -229,13 +229,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>net.elytrium.limboauth</groupId>
-            <artifactId>limboauth</artifactId>
-            <version>1.1.13</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/limboauth-1.1.13.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>net.luckperms</groupId>
             <artifactId>api</artifactId>
             <version>5.4</version>
