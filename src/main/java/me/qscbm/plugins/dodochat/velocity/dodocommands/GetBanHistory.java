@@ -1,10 +1,11 @@
-package me.qscbm.plugins.dodochat.common.dodocommands;
+package me.qscbm.plugins.dodochat.velocity.dodocommands;
 
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.utils.DateUtil;
 import me.qscbm.plugins.dodochat.common.Config;
+import me.qscbm.plugins.dodochat.common.dodocommands.Help;
 import me.qscbm.plugins.dodochat.common.hook.LibertyBansHook;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;

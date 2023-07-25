@@ -1,0 +1,111 @@
+# 设置项
+settings:
+  # Dodo消息转发相关
+  SendDodoMessage:
+    # 使用颜色代码身份组id列表
+    useColor:
+      - "112"
+      - "1123"
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%sender%代表发送者的群昵称，使用MiniMessage）
+    # spigot端就别改了
+    # https://adventure-docs.minecraft.kim/minimessage.html
+    format: "<bold>『<yellow>Dodo消息</yellow>』</bold> <aqua>%sender%</aqua> <gray>-></gray> %message%"
+  # 服内消息转发相关
+  # 注意支持markdown语法
+  # https://open.imdodo.com/dev/api/message.html
+  SendServerMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%message%代表消息内容，%sender%代表发送者的显示名）
+    format: "[服内消息]%sender%：%message%"
+  # 进服消息提醒（发送到Dodo频道）(连接到群组的初始服务器，一般只有一个服)
+  JoinMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%player%代表玩家的显示名）
+    format: "%player%进入了服务器"
+  # 退服消息提醒（发送到Dodo频道）(同上)
+  LeaveMessage:
+    # 是否启用
+    Enable: true
+    # 消息格式（%player%代表玩家的显示名）
+    format: "%player%退出了服务器"
+  # 服务器列表，对应的服务求发送到哪个频道，spigot请使用spigot-server，并且只填写一个!
+  Servers:
+    # example:
+    # spigot-server: "1112"
+    server1: "1111"
+  # 机器人机器人鉴权Token
+  botToken: "token"
+  # 机器人唯一标识
+  botClientId: "clientId"
+  #群号
+  islandId: "1111"
+  # Dodo发送命令频道
+  # 不想要也很简单，随便填个频道号对不上就好
+  # 这边建议和消息转发不同的频道
+  # 命令spigot端无法使用
+  dodoCommandChannelId: "11"
+  # 数据库设置
+  MySQL:
+    # 地址
+    url: jdbc:mysql://localhost:3306
+    # 数据库
+    database: "dodochat"
+    #账户
+    name: root
+    # 密码
+    password: 123456
+  # 分配权限组的设置(如果权限组不在这里不分配)
+  Call:
+    # 权限组
+    - Group: "Admin"
+      # 身份组id
+      roleId: "111"
+      # 权限组
+    - Group: "Builder"
+      # 身份组id
+      roleId: "111"
+      # 权限组
+    - Group: "Default"
+      # 身份组id
+      roleId: "111"
+  # 封禁事件转发频道id
+  LibertyBansListenerMessage: "111"
+  # 命令映射
+  CommandMapping:
+    # 设置
+    Settings:
+      # 正版玩家身份组
+      # 当命令处理程序判断是否为正版是首先判断玩家是否在线
+      # 如果在线直接判断，如果
+      onlineModeRoleId: "11111"
+      # 帮助
+      help:
+        # help命令
+        command: "mccmdhelp"
+        # 帮助页面,%dodoCommand% %vcCommand%务必在一行
+        content: |-
+          ```
+          服务器指令映射帮助(请在第一个参数填上要使用命令的已绑定玩家名字,如:/say player 大家好,如果插件有发送消息会转发到私信):
+          %dodoCommand%   - %vcCommand%
+          ```
+    # 映射列表
+    #指令列表:
+    #/help                                   - 获取指令列表
+    #/status                                 - 获取机器人状态
+    #/bind <游戏名>                           - 绑定账号
+    #/blist                                  - 获得绑定的账号列表
+    #/unbind <游戏名>                         - 解除绑定账号
+    #/resetpassword <游戏名>                  - 重置账号密码
+    #/getbanhistory <游戏名>                  - 获取处罚记录
+    #/call                                   - 获取身份组
+    #/minfo                                  - 获取玩家信息
+    #不要和以上重名
+    MappingList:
+      - dodoCommand: cmd1
+        vcCommand: cmd
+      - dodoCommand: cmd2
+        vcCommand: cmd arg1

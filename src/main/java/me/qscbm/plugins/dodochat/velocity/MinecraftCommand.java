@@ -2,14 +2,12 @@ package me.qscbm.plugins.dodochat.velocity;
 
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
-import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.Player;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
-import me.qscbm.plugins.dodochat.velocity.DodoChat;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.json.JSONArray;

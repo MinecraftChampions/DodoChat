@@ -10,14 +10,16 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import io.github.minecraftchampions.dodoopenjava.command.Command;
 import io.github.minecraftchampions.dodoopenjava.event.EventManage;
-import io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.DodoEventListener;
-import me.qscbm.plugins.dodochat.common.Verify;
 import me.qscbm.plugins.dodochat.common.hook.Hook;
 import me.qscbm.plugins.dodochat.common.dodocommands.*;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
+import me.qscbm.plugins.dodochat.velocity.cmdmapping.Trigger;
+import me.qscbm.plugins.dodochat.velocity.dodocommands.GetBanHistory;
+import me.qscbm.plugins.dodochat.velocity.dodocommands.McCmdHelp;
+import me.qscbm.plugins.dodochat.velocity.dodocommands.ResetPassword;
 import org.slf4j.Logger;
 
 @Plugin(
@@ -57,11 +59,13 @@ public class DodoChat {
         logger.info("注册事件监听器中");
         server.getEventManager().register(this, new MinecraftEventListener());
         EventManage.registerEvents(new DodoEventListener(),Config.authorization); //注册DodoOpenJava事件
+        EventManage.registerEvents(new Trigger(),Config.authorization); //注册DodoOpenJava事件
         logger.info("注册命令解析器中");
+        getServer().getAllPlayers().size();
         CommandMeta meta = server.getCommandManager().metaBuilder("dodochat").aliases("dochat","dc").plugin(this).build();
         server.getCommandManager().register(meta,new MinecraftCommand());
         Command.registerCommand(Config.authorization,new Help(),new Bind(),new Status(),new BindList(),new Unbind(),
-                new ResetPassword(),new Call(),new GetBanHistory(),new MInfo());
+                new ResetPassword(),new Call(),new GetBanHistory(),new MInfo(),new McCmdHelp());
         /*
         非IMC.RE服务器使用
         Command.registerCommand(authorization,new Help(),new Bind(),new Status(),new Verify(),new BindList(),new Unbind(),

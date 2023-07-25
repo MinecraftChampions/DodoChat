@@ -8,20 +8,11 @@ import com.velocitypowered.api.event.player.ServerPostConnectEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
-import io.github.minecraftchampions.dodoopenjava.api.v2.PersonalApi;
 import me.qscbm.plugins.dodochat.common.Config;
-import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.Utils;
-import me.qscbm.plugins.dodochat.common.Verify;
-import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
-import net.kyori.adventure.text.Component;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
 
 public class MinecraftEventListener {
     public static RegisteredServer lobbyServer = null;

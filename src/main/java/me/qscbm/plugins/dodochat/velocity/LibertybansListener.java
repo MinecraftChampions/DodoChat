@@ -2,7 +2,6 @@ package me.qscbm.plugins.dodochat.velocity;
 
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import me.qscbm.plugins.dodochat.common.Config;
-import me.qscbm.plugins.dodochat.common.hook.Hook;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
 import space.arim.libertybans.api.PlayerVictim;
 import space.arim.libertybans.api.event.PunishEvent;

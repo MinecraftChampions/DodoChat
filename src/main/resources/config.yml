@@ -10,10 +10,6 @@ settings:
     Enable: true
     # spigot子服使用的消息格式
     spigot-format: "§f§l『§e§lDodo消息§f§l』§r §b%sender% §7-> §f%message%"
-    # 消息格式（%message%代表消息内容，%sender%代表发送者的群昵称，使用MiniMessage）
-    # spigot端就别改了
-    # https://adventure-docs.minecraft.kim/minimessage.html
-    format: "<bold>『<yellow>Dodo消息</yellow>』</bold> <aqua>%sender%</aqua> <gray>-></gray> %message%"
   # 服内消息转发相关
   # 注意支持markdown语法
   # https://open.imdodo.com/dev/api/message.html
@@ -38,7 +34,7 @@ settings:
   Servers:
     # example:
     # spigot-server: "1112"
-    server1: "1111"
+    spigot-server: "1111"
   # 机器人机器人鉴权Token
   botToken: "token"
   # 机器人唯一标识
@@ -48,7 +44,7 @@ settings:
   # Dodo发送命令频道
   # 不想要也很简单，随便填个频道号对不上就好
   # 这边建议和消息转发不同的频道
-  # 命令spigot端无法使用
+  # 命令spigot可以使用，但部分功能无法使用
   dodoCommandChannelId: "11"
   # 数据库设置
   MySQL:
@@ -74,5 +70,3 @@ settings:
     - Group: "Default"
       # 身份组id
       roleId: "111"
-  # 封禁事件转发频道id
-  LibertyBansListenerMessage: "111"

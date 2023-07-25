@@ -4,6 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfigur
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.util.ConfigUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -21,9 +22,14 @@ public class Config {
             configFolder.toFile().mkdirs();
         }
         File configFile = configFolder.resolve("config.yml").toFile();
+
         if (!configFile.exists()) {
             try {
-                ConfigUtil.copyResourcesToFile("config.yml", configFile.getPath());
+                if (Platform.isVelocity) {
+                    ConfigUtil.copyResourcesToFile("velocity/config.yml", configFile.getPath());
+                } else {
+                    ConfigUtil.copyResourcesToFile("config.yml", configFile.getPath());
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -37,7 +43,7 @@ public class Config {
                 throw new RuntimeException(e);
             }
         }
-       Config.dataFile = dataFile;
+        Config.dataFile = dataFile;
         configuration = YamlConfiguration.loadConfiguration(configFile);
         authorization = BaseUtil.Authorization(getConfiguration().getString("settings.botClientId"), getConfiguration().getString("settings.botToken"));//拼接
         enableDodoMessage = getConfiguration().getBoolean("settings.SendDodoMessage.Enable");//获取配置项
