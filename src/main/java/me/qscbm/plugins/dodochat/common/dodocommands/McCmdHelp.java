@@ -1,11 +1,9 @@
-package me.qscbm.plugins.dodochat.velocity.dodocommands;
+package me.qscbm.plugins.dodochat.common.dodocommands;
 
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
-import io.github.minecraftchampions.dodoopenjava.configuration.ConfigurationSection;
 import me.qscbm.plugins.dodochat.common.Config;
-import me.qscbm.plugins.dodochat.common.dodocommands.Help;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import org.apache.commons.lang3.StringUtils;
 
@@ -28,18 +26,17 @@ public class McCmdHelp implements CommandExecutor {
         if (!Objects.equals(commandSender.getChannelId(), Config.getConfiguration().getString("settings.dodoCommandChannelId"))) {
             return;
         }
-        if (!Platform.isVelocity) {
-            return;
-        }
+ 
         if (strings.length != 0) {
             new Help().onCommand(commandSender,strings);
             return;
         }
+        String commandP = Platform.isVelocity ? "%vcCommand%" : "%mcCommand%";
         String content = Config.getConfiguration().getString("settings.CommandMapping.Settings.help.content");
         List<String> stringList = new ArrayList<>(Arrays.stream(content.split("\n")).toList());
         int line = 0;
         for (int i = 0;i<stringList.size();i++) {
-            if (stringList.get(i).contains("%dodoCommand%") && stringList.get(i).contains("%vcCommand%")) {
+            if (stringList.get(i).contains("%dodoCommand%") && stringList.get(i).contains(commandP)) {
                 line = i;
                 break;
             }
@@ -58,7 +55,7 @@ public class McCmdHelp implements CommandExecutor {
         String text = StringUtils.join(stringList,"\n");
         for (Map<String,String> config : configList) {
             text = text.replaceFirst("%dodoCommand%",config.get("dodoCommand"));
-            text = text.replaceFirst("%vcCommand%",config.get("vcCommand"));
+            text = text.replaceFirst(commandP,config.get(Platform.isVelocity ? "vcCommand" : "mcCommand"));
         }
         try {
             ChannelMessageApi.sendTextMessage(Config.authorization,commandSender.getChannelId(),text);

@@ -42,10 +42,11 @@ settings:
   #群号
   islandId: "1111"
   # Dodo发送命令频道
-  # 不想要也很简单，随便填个频道号对不上就好
   # 这边建议和消息转发不同的频道
   # 命令spigot可以使用，但部分功能无法使用
   dodoCommandChannelId: "11"
+  # 是否启用命令
+  EnableCommands: false
   # 数据库设置
   MySQL:
     # 地址
@@ -70,3 +71,34 @@ settings:
     - Group: "Default"
       # 身份组id
       roleId: "111"
+  # 命令映射
+  CommandMapping:
+    # 设置
+    Settings:
+      # 帮助
+      help:
+        # help命令
+        command: "mccmdhelp"
+        # 帮助页面,%dodoCommand% %mcCommand%务必在一行
+        content: |-
+          ```
+          服务器指令映射帮助(请在第一个参数填上要使用命令的已绑定玩家名字,如:/say player 大家好,如果插件有发送消息会转发到私信):
+          %dodoCommand%   - %mcCommand%
+          ```
+    # 映射列表
+    #指令列表:
+    #/help                                   - 获取指令列表
+    #/status                                 - 获取机器人状态
+    #/bind <游戏名>                           - 绑定账号
+    #/blist                                  - 获得绑定的账号列表
+    #/unbind <游戏名>                         - 解除绑定账号
+    #/resetpassword <游戏名>                  - 重置账号密码
+    #/getbanhistory <游戏名>                  - 获取处罚记录
+    #/call                                   - 获取身份组
+    #/minfo                                  - 获取玩家信息
+    #不要和以上重名
+    MappingList:
+      - dodoCommand: cmd1
+        mcCommand: cmd
+      - dodoCommand: cmd2
+        mcCommand: cmd arg1

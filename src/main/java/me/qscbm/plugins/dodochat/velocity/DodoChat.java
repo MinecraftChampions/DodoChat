@@ -18,14 +18,14 @@ import me.qscbm.plugins.dodochat.common.dodocommands.*;
 import me.qscbm.plugins.dodochat.common.hook.platform.Platform;
 import me.qscbm.plugins.dodochat.velocity.cmdmapping.Trigger;
 import me.qscbm.plugins.dodochat.velocity.dodocommands.GetBanHistory;
-import me.qscbm.plugins.dodochat.velocity.dodocommands.McCmdHelp;
+import me.qscbm.plugins.dodochat.common.dodocommands.McCmdHelp;
 import me.qscbm.plugins.dodochat.velocity.dodocommands.ResetPassword;
 import org.slf4j.Logger;
 
 @Plugin(
         id = "dodochat",
         name = "DodoChat",
-        version = "1.1",
+        version = "1.2",
         dependencies = {
                 @Dependency(id = "limboauth"),
                 @Dependency(id = "luckperms"),

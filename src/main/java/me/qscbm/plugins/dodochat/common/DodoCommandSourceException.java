@@ -1,4 +1,4 @@
-package me.qscbm.plugins.dodochat.velocity;
+package me.qscbm.plugins.dodochat.common;
 
 public class DodoCommandSourceException extends RuntimeException {
     public DodoCommandSourceException(String message) {

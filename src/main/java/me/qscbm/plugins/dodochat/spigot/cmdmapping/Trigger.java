@@ -1,4 +1,4 @@
-package me.qscbm.plugins.dodochat.velocity.cmdmapping;
+package me.qscbm.plugins.dodochat.spigot.cmdmapping;
 
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
@@ -8,9 +8,10 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent;
 import me.qscbm.plugins.dodochat.common.Config;
 import me.qscbm.plugins.dodochat.common.DataStorage;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
-import me.qscbm.plugins.dodochat.velocity.DodoChat;
-import me.qscbm.plugins.dodochat.velocity.DodoCommandSource;
+import me.qscbm.plugins.dodochat.spigot.DodoChat;
+import me.qscbm.plugins.dodochat.spigot.DodoCommandSource;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
 import org.json.JSONArray;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Trigger implements Listener {
     @EventHandler
@@ -48,13 +50,13 @@ public class Trigger implements Listener {
         String channelId = e.getChannelId();
         for (Map<String,String> config : configList) {
             String doCommand = config.get("dodoCommand");
-            String vcCommand = config.get("vcCommand");
+            String mcCommand = config.get("mcCommand");
             if (Objects.equals(doCommand, args[0])) {
                 String player = args[1];
                 List<String> list = new ArrayList<>(List.of(args));
                 list.remove(1);
                 list.remove(0);
-                list.add(0,vcCommand);
+                list.add(0,mcCommand);
                 String cmd = StringUtils.join(list," ");
                 try {
                     DataStorage.conn.prepareStatement("insert ignore into users values("+ dodoId + ",'[]')").executeUpdate();
@@ -78,12 +80,23 @@ public class Trigger implements Listener {
                     }
                     UUID uuid = LuckPermsHook.luckPerms.getUserManager().lookupUniqueId(player).get();
                     DodoCommandSource source = new DodoCommandSource(uuid,channelId,islandId,dodoId);
-                    boolean s = DodoChat.getINSTANCE().getServer().getCommandManager().executeAsync(source,cmd).get();
-                    if (!s) {
-                        ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"命令执行失败");
-                    } else {
-                        ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"命令执行成功");
-                    }
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(DodoChat.getInstance(),()-> {
+                        boolean s;
+                        s = (Bukkit.dispatchCommand(source, cmd));
+                        if (!s) {
+                            try {
+                                ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"命令执行失败");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        } else {
+                            try {
+                                ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"命令执行成功");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+                    });
                 } catch (SQLException ex) {
                     try {
                         ChannelMessageApi.sendTextMessage(Config.authorization, Config.getConfiguration().getString("settings.dodoCommandChannelId"),"命令执行错误");

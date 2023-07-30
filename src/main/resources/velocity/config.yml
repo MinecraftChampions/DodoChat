@@ -2,10 +2,6 @@
 settings:
   # Dodo消息转发相关
   SendDodoMessage:
-    # 使用颜色代码身份组id列表
-    useColor:
-      - "112"
-      - "1123"
     # 是否启用
     Enable: true
     # 消息格式（%message%代表消息内容，%sender%代表发送者的群昵称，使用MiniMessage）
@@ -80,7 +76,7 @@ settings:
     Settings:
       # 正版玩家身份组
       # 当命令处理程序判断是否为正版是首先判断玩家是否在线
-      # 如果在线直接判断，如果
+      # 如果在线直接判断，否则判断是否有身份组
       onlineModeRoleId: "11111"
       # 帮助
       help:

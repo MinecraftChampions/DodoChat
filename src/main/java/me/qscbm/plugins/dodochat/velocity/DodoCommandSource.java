@@ -16,6 +16,7 @@ import com.velocitypowered.api.util.ModInfo;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.PersonalApi;
 import me.qscbm.plugins.dodochat.common.Config;
+import me.qscbm.plugins.dodochat.common.DodoCommandSourceException;
 import me.qscbm.plugins.dodochat.common.hook.LuckPermsHook;
 import me.qscbm.plugins.dodochat.common.hook.platform.Velocity;
 import net.kyori.adventure.bossbar.BossBar;
@@ -108,7 +109,12 @@ public class DodoCommandSource implements Player {
 
     @Override
     public boolean hasPermission(String permission) {
-        return true;
+        try {
+            return LuckPermsHook.luckPerms.getUserManager().loadUser(uuid)
+                    .thenApplyAsync(user -> user.getCachedData().getPermissionData().checkPermission(permission).asBoolean()).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -342,11 +348,12 @@ public class DodoCommandSource implements Player {
 
     @Override
     public Tristate getPermissionValue(String s) {
-        DodoChat.getINSTANCE().getLogger().warn("检测到命令映射的命令调用了PermissionSubject#getPermissionValue(获取权限值:true/false/不存在(permission/-permission/没有项))方法,可能导致命令无法使用乃至报错");
-        if (Velocity.hasPlayer(username)) {
-            return DodoChat.getINSTANCE().getServer().getPlayer(username).get().getPermissionValue(s);
+        try {
+            return Tristate.fromNullableBoolean(LuckPermsHook.luckPerms.getUserManager().loadUser(uuid)
+                    .thenApplyAsync(user -> user.getCachedData().getPermissionData().checkPermission(s)).get().asBoolean());
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
         }
-        return Tristate.TRUE;
     }
 
     @Override
