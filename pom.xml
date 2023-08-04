@@ -14,7 +14,7 @@
     <properties>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dodoVersion>2.4.8</dodoVersion>
+        <dodoVersion>2.5.1</dodoVersion>
     </properties>
 
     <build>
